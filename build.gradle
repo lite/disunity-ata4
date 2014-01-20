@@ -1,0 +1,43 @@
+sourceCompatibility = 1.7
+version = 1.0
+
+subprojects {
+    apply plugin: 'java'
+    apply plugin: 'maven'
+    
+    repositories {
+        mavenCentral()
+    }
+    
+    sourceSets {
+        main{
+            java {
+                srcDirs = ["src"]
+            }
+            resources {
+                srcDirs = ["src"]
+                include "resources/*.txt", "resources/*.dat"
+            }
+        }
+    }
+    dependencies {
+        compile 'commons-logging:commons-logging:1.1.1'
+        compile 'commons-io:commons-io:2.4'       
+        compile 'commons-cli:commons-cli:1.2'     
+        compile 'org.apache.commons:commons-lang3:3.1'
+    }
+}
+
+project(':disunity') {
+    jar {
+        from { configurations.compile.collect { it.isDirectory() ? it : zipTree(it) } }
+        manifest{
+            attributes("Main-Class": "info.ata4.unity.cli.DisUnityCli")
+        }
+    }
+    
+    dependencies {
+        compile project(':ioutils')
+        compile project(':lzmajio')
+    }
+}

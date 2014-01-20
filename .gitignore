@@ -1,0 +1,12 @@
+# netbeans
+/nbproject/configs/
+/nbproject/private/
+
+# builds
+/build/
+/dist/
+/releases/
+
+# other
+/private/
+.gradle/
