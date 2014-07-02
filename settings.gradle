@@ -1,1 +1,1 @@
-include ('disunity', 'ioutils', 'lzmajio')
+include ('disunity', 'lzmajio', 'ioutils', 'jcommander')
